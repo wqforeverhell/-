@@ -7,6 +7,12 @@
 //
 
 #import "ZYAppDelegate.h"
+#import "ZYAiGuangViewController.h"
+#import "ZYFenLeiViewController.h"
+#import "ZYMineViewController.h"
+#import "ZYDaPeiViewController.h"
+
+
 
 @implementation ZYAppDelegate
 
@@ -15,6 +21,52 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    ZYAiGuangViewController *aiGuangViewC = [[ZYAiGuangViewController alloc] init];
+    UINavigationController *nav1 = [[UINavigationController alloc] initWithRootViewController:aiGuangViewC];
+   
+    aiGuangViewC.tabBarItem.title = @"爱逛";
+    aiGuangViewC.tabBarItem.image = [UIImage imageNamed:@"爱逛"];
+    
+    ZYFenLeiViewController *fenLeiViewC = [[ZYFenLeiViewController alloc] init];
+    UINavigationController *nav2 = [[UINavigationController alloc] initWithRootViewController:fenLeiViewC];
+  
+  
+    fenLeiViewC.tabBarItem.title = @"分类";
+    fenLeiViewC.tabBarItem.image = [UIImage imageNamed:@"分类"];
+    
+    ZYDaPeiViewController *daPeiViewC = [[ZYDaPeiViewController alloc] init];
+    UINavigationController *nav3 = [[UINavigationController alloc] initWithRootViewController:daPeiViewC];
+    
+   
+    
+    daPeiViewC.tabBarItem.title = @"搭配";
+    daPeiViewC.tabBarItem.image = [UIImage imageNamed:@"搭配"];
+    
+    ZYMineViewController *mineViewC = [[ZYMineViewController alloc] init];
+    UINavigationController *nav4 = [[UINavigationController alloc] initWithRootViewController:mineViewC];
+ 
+    mineViewC.tabBarItem.title = @"我的";
+    mineViewC.tabBarItem.image = [UIImage imageNamed:@"个人"];
+    
+    UITabBarController *tabBar = [[UITabBarController alloc] init];
+    
+    CGRect frame = CGRectMake(0.0, 0, 320, 50);
+    UIView *view = [[UIView alloc] initWithFrame:frame];
+    [view setBackgroundColor:[[UIColor alloc] initWithRed:253/255.0
+                                                 green:188/255.0
+                                                  blue:201/255.0
+                                                 alpha:1]];
+    [tabBar.tabBar insertSubview:view atIndex:0];
+    tabBar.viewControllers = @[nav1,nav2,nav3,nav4];
+    tabBar.tabBar.selectedImageTintColor=[UIColor redColor];
+    
+    
+    
+    
+    self.window.rootViewController=tabBar;
+    
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
